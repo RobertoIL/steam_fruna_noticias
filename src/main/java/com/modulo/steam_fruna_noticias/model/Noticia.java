@@ -28,8 +28,10 @@ public class Noticia {
     private int like;
     @Column(name = "dislike", columnDefinition = "INT default 0")
     private int dislike;
-    @Column(name = "autor", nullable = false, length = 50)
-    private String autor;
+
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
 
 
 
