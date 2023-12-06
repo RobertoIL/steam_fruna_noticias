@@ -2,6 +2,7 @@ package com.modulo.steam_fruna_noticias.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.transaction.annotation.Transactional;
 
 @Data
 @Builder
@@ -10,6 +11,7 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
+@Transactional
 @Table(name = "noticia")
 public class Noticia {
     @Id
@@ -30,11 +32,6 @@ public class Noticia {
     private String autor;
 
 
-    public Noticia(String titulo, String descripcion, String autor){
-        this.titulo = titulo;
-        this.descripcion = descripcion;
-        this.autor = autor;
-    }
 
 
 }
