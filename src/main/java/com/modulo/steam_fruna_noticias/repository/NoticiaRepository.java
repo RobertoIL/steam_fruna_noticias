@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface Noticia extends JpaRepository<Noticia, Long> {
-    Noticia findByTitulo(String titulo);
+public interface NoticiaRepository extends JpaRepository<NoticiaRepository, Long> {
+    NoticiaRepository findByTitulo(String titulo);
 }

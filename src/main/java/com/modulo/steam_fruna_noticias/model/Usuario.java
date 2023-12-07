@@ -25,6 +25,6 @@ public class Usuario {
     private String nombre;
     @Column(name = "apellido", nullable = false, length = 120)
     private String apellido;
-    @Column(name = "correo", nullable = false, unique = true, length = 180)
-    private String correo;
+    @Column(name = "email", nullable = false, unique = true, length = 180)
+    private String email;
 }
