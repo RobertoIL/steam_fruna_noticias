@@ -17,7 +17,7 @@ public class ClientController {
     }
 
     // add noticia
-    @PostMapping("/addNoticia")
+    @PostMapping("/add")
     public String addNoticia(@RequestBody Noticia noticia) {
         noticiaService.addNoticia(noticia);
         return "Noticia agregada";
@@ -25,7 +25,7 @@ public class ClientController {
 
     // get noticia by id
     @GetMapping("/noticia/{id}")
-    public Noticia getAllNoticias(@RequestParam int id) {
+    public Noticia getNoticiaById(@PathVariable("id") int id) {
         return noticiaService.getNoticiaById(id);
     }
 
@@ -45,7 +45,7 @@ public class ClientController {
 
     // delete noticia by id
     @DeleteMapping("/noticia/{id}")
-    public String deleteNoticia(@PathVariable int id) {
+    public String deleteNoticia(@PathVariable("id") int id) {
         noticiaService.deleteNoticia(id);
         return "Noticia eliminada";
     }

@@ -4,9 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 @Table(name = "noticias")
@@ -16,18 +13,15 @@ public class Noticia {
     private int id;
     private String titulo;
     private String descripcion;
-    private Categorias categorias;
+    private Categorias categoria;
+    @Column(name = "like", columnDefinition = "int default 0")
     private int like;
+    @Column(name = "dislike", columnDefinition = "int default 0")
     private int dislike;
-    private int autor;
 
-    public Noticia(String titulo, String descripcion, Categorias categoria, int autor) {
-        this.titulo = titulo;
-        this.descripcion = descripcion;
-        this.categorias = categoria;
-        this.autor = autor;
-    }
-
+    @ManyToOne
+    @JoinColumn(name = "autor_id")
+    private Usuario autor;
 
 
 }

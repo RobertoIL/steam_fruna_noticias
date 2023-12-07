@@ -16,6 +16,11 @@ public enum Categorias {
         public String toString () {
             return "eventos";
         }
+    },JUEGOS {
+        @Override
+        public String toString() {
+            return "juegos";
+        }
     }
 
 }
