@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class ClientController {
+@RequestMapping(path = "/noticias")
+public class NoticiaController {
     @Autowired
     private NoticiaService noticiaService;
-    @RequestMapping("/")
+    @RequestMapping("/saludo")
     public String hello_world() {
         return "Hello World";
     }
@@ -30,7 +31,7 @@ public class ClientController {
     }
 
     // get all noticias
-    @GetMapping("/noticias")
+    @GetMapping("/")
     public List<Noticia> getAllNoticias() {
         return noticiaService.getAllNoticias();
     }
