@@ -12,10 +12,6 @@ import java.util.List;
 public class NoticiaController {
     @Autowired
     private NoticiaService noticiaService;
-    @RequestMapping("/saludo")
-    public String hello_world() {
-        return "Hello World";
-    }
 
     // add noticia
     @PostMapping("/add")
@@ -25,7 +21,7 @@ public class NoticiaController {
     }
 
     // get noticia by id
-    @GetMapping("/noticia/{id}")
+    @GetMapping("/{id}")
     public Noticia getNoticiaById(@PathVariable("id") int id) {
         return noticiaService.getNoticiaById(id);
     }
