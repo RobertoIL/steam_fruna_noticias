@@ -1,16 +1,19 @@
 <template>
-    <Navbar />
-    <div class="container">
-        <div class="input-group mt-3 mb-3">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-                {{ categoria }}
-            </button>
+    <div>
+        <Navbar />
+        <div class="container">
+            <div class="container">
+                <div class="input-group mt-3 mb-3">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                    {{ categoria }}
+                    </button>
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" @click="seleccionarCategoria('Título')">Título</a></li>
-                <li><a class="dropdown-item" @click="seleccionarCategoria('Categoría')">Categoría</a></li>
                 <li><a class="dropdown-item" @click="seleccionarCategoria('Autor')">Autor</a></li>
             </ul>
             <input type="text" class="form-control" :placeholder= "'Ingrese ' + categoria">
+        </div>
+    </div>
         </div>
     </div>
 </template>

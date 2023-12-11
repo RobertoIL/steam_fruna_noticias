@@ -1,6 +1,6 @@
 <template>
-    <header>
-        <nav class="navbar navbar-expand-sm bg-light navbar-light">
+    <main>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <div class="container-fluid">
                 <ul class="navbar-nav">
                 <li class="nav-item">
@@ -18,7 +18,11 @@
                 </ul>
             </div>
             </nav>
-    </header>
+        </main>
 
 </template>
+
+<style>
+    
+</style>
 

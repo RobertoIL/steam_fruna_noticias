@@ -1,11 +1,11 @@
 <template>
-    <main>
+    <div>
         <Navbar />
-        
-        <Noticia />
-        
-        
-    </main>
+        <div class="container">
+            <Noticia />
+        </div>
+    </div>
+   
     
     
     
@@ -43,7 +43,7 @@
         }
     
 </script>
-
-<style>
     
+<style>
+
 </style>
