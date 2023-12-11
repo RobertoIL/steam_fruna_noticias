@@ -33,15 +33,13 @@ public class NoticiaController {
     }
 
     // update noticia
-    @PutMapping("/noticia")
+    @PutMapping("/update")
     public Noticia updateNoticia(@RequestBody Noticia noticia) {
         return noticiaService.updateNoticia(noticia);
     }
 
-
-
     // delete noticia by id
-    @DeleteMapping("/noticia/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteNoticia(@PathVariable("id") int id) {
         noticiaService.deleteNoticia(id);
         return "Noticia eliminada";
