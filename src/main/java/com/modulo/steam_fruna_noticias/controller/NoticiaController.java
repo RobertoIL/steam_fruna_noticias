@@ -27,21 +27,20 @@ public class NoticiaController {
     }
 
     // get all noticias
+    @CrossOrigin(origins = "http://localhost:5173")
     @GetMapping("/")
     public List<Noticia> getAllNoticias() {
         return noticiaService.getAllNoticias();
     }
 
     // update noticia
-    @PutMapping("/noticia")
+    @PutMapping("/update")
     public Noticia updateNoticia(@RequestBody Noticia noticia) {
         return noticiaService.updateNoticia(noticia);
     }
 
-
-
     // delete noticia by id
-    @DeleteMapping("/noticia/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteNoticia(@PathVariable("id") int id) {
         noticiaService.deleteNoticia(id);
         return "Noticia eliminada";
