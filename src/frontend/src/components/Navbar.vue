@@ -7,13 +7,13 @@
                     <a class="nav-link active" href="/">Noticias</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/populares">Populares</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="/buscador">Buscar Noticias</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/mis-noticias">Mis Noticias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/crear-noticia">Crear Noticia</a>
                 </li>
                 </ul>
             </div>

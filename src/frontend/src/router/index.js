@@ -13,15 +13,16 @@ const router = createRouter({
       name: 'Mis Noticias',
       component: () => import('../views/MisNoticias.vue')
     },
-    {
-      path: '/populares',
-      name: 'Noticias populares',
-      component: () => import('../views/NoticiasPopulares.vue')
-    },
+    
     {
       path: '/buscador',
       name: 'Buscar Noticias',
       component: () => import('../views/Buscador.vue')
+    },
+    {
+      path: '/crear-noticia',
+      name: 'Crear Noticia',
+      component: () => import('../views/CrearNoticia.vue')
     }
   ]
 })

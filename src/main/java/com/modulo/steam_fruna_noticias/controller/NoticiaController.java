@@ -1,13 +1,16 @@
 package com.modulo.steam_fruna_noticias.controller;
 
 import com.modulo.steam_fruna_noticias.model.Noticia;
+import com.modulo.steam_fruna_noticias.model.Usuario;
 import com.modulo.steam_fruna_noticias.service.NoticiaService;
+import com.modulo.steam_fruna_noticias.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping(path = "/noticias")
 public class NoticiaController {
     @Autowired
@@ -27,7 +30,7 @@ public class NoticiaController {
     }
 
     // get all noticias
-    @CrossOrigin(origins = "http://localhost:5173")
+
     @GetMapping("/")
     public List<Noticia> getAllNoticias() {
         return noticiaService.getAllNoticias();
@@ -44,5 +47,13 @@ public class NoticiaController {
     public String deleteNoticia(@PathVariable("id") int id) {
         noticiaService.deleteNoticia(id);
         return "Noticia eliminada";
+    }
+    @GetMapping("/titulo")
+    public Noticia getNoticiaByTitulo(@RequestBody String titulo) {
+        return noticiaService.getNoticiaByTitulo(titulo);
+    }
+    @GetMapping("/autor")
+    public Noticia getNoticiaByAutor(@RequestBody String nombre) {
+        return noticiaService.getNoticiaByAutor(nombre);
     }
 }

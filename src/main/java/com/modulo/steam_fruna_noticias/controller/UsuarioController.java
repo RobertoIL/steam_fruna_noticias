@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping(path = "/usuarios")
 public class UsuarioController {
     @Autowired
@@ -31,5 +32,7 @@ public class UsuarioController {
         usuarioService.deleteUsuario(id);
         return "Usuario eliminado";
     }
+
+
 
 }

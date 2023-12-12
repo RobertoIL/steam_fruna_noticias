@@ -5,7 +5,7 @@
                 <div class="col-11">
                     <h4 class="card-tittle">{{ noticia.titulo }}</h4>
                     <p class="card-text">{{ noticia.descripcion }}</p>
-                    <p class="card-text blockquote-footer">{{noticia.autor}}</p>
+                    <p class="card-text blockquote-footer">{{noticia.autor.nombre}}</p>
                     <kbd class="card-text">{{noticia.categoria}}</kbd>
                 </div>
                 <div class="col-1">
