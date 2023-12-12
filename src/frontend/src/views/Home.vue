@@ -3,13 +3,12 @@
         <Navbar />
         <Filtro />
         <div class="container">
-            <Noticia />
+            <Noticia v-for="noticia in noticias" :key="noticia.id" :noticia="noticia" />
+            
+            
         </div>
     </div>
    
-    
-    
-    
 </template>
 
 <script>

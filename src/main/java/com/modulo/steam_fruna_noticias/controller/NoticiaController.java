@@ -27,6 +27,7 @@ public class NoticiaController {
     }
 
     // get all noticias
+    @CrossOrigin(origins = "http://localhost:5173")
     @GetMapping("/")
     public List<Noticia> getAllNoticias() {
         return noticiaService.getAllNoticias();
