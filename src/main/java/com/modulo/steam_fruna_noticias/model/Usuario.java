@@ -18,8 +18,16 @@ public class Usuario {
     private String nombre;
     @Column(name = "email", nullable = false, length = 120, unique = true)
     private String email;
-    @Column(name = "password", nullable = false, length = 25)
+    @Column(name = "password", nullable = false, length = 250)
     private String password;
 
 
+    public static Usuario of(String username, String nombre, String email, String password) {
+        var usuario = new Usuario();
+        usuario.setUsername(username);
+        usuario.setNombre(nombre);
+        usuario.setEmail(email);
+        usuario.setPassword(password);
+        return usuario;
+    }
 }

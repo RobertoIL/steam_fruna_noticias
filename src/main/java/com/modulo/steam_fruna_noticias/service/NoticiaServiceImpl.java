@@ -12,8 +12,7 @@ import java.util.List;
 public class NoticiaServiceImpl implements NoticiaService{
     @Autowired
     private NoticiaRepository noticiaRepository;
-    @Autowired
-    private UsuarioService usuarioService;
+
     @Override
     public Noticia addNoticia(Noticia noticia) {
         return noticiaRepository.save(noticia);
@@ -34,14 +33,5 @@ public class NoticiaServiceImpl implements NoticiaService{
     public void deleteNoticia(int id) {
         noticiaRepository.deleteById(id);
     }
-    @Override
-    public Noticia getNoticiaByTitulo(String titulo) {
-        return noticiaRepository.findByTitulo(titulo);
-    }
-    @Override
-    public Noticia getNoticiaByAutor(String nombre) {
-        Usuario autor = usuarioService.getUsuarioByNombre(nombre);
-        return noticiaRepository.findByAutor(autor);
 
-    }
 }

@@ -9,6 +9,5 @@ import java.util.List;
 
 @Repository
 public interface NoticiaRepository extends CrudRepository<Noticia, Integer> {
-    Noticia findByTitulo(String titulo);
-    Noticia findByAutor(Usuario autor);
+
 }

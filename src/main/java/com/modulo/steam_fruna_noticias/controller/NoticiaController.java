@@ -1,9 +1,7 @@
 package com.modulo.steam_fruna_noticias.controller;
 
 import com.modulo.steam_fruna_noticias.model.Noticia;
-import com.modulo.steam_fruna_noticias.model.Usuario;
 import com.modulo.steam_fruna_noticias.service.NoticiaService;
-import com.modulo.steam_fruna_noticias.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,12 +46,5 @@ public class NoticiaController {
         noticiaService.deleteNoticia(id);
         return "Noticia eliminada";
     }
-    @GetMapping("/titulo")
-    public Noticia getNoticiaByTitulo(@RequestBody String titulo) {
-        return noticiaService.getNoticiaByTitulo(titulo);
-    }
-    @GetMapping("/autor")
-    public Noticia getNoticiaByAutor(@RequestBody String nombre) {
-        return noticiaService.getNoticiaByAutor(nombre);
-    }
+
 }

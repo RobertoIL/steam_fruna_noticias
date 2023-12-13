@@ -10,8 +10,6 @@ import java.util.List;
 public interface NoticiaService {
     public Noticia addNoticia(Noticia noticia);
     public Noticia getNoticiaById(int id);
-    public Noticia getNoticiaByTitulo(String titulo);
-    public Noticia getNoticiaByAutor(String nombre);
     public List<Noticia> getAllNoticias();
     public Noticia updateNoticia(Noticia noticia);
     public void deleteNoticia(int id);

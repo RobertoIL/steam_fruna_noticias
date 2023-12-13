@@ -19,8 +19,7 @@ public class SecurityConfig {
                         authorizeRequests
                                 .requestMatchers("/**").permitAll()
                                 .anyRequest().authenticated()
-                )
-                .formLogin(withDefaults());
+                );
         return http.build();
     }
 
