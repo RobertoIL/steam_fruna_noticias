@@ -1,5 +1,8 @@
 package com.modulo.steam_fruna_noticias.controller;
 
+import com.modulo.steam_fruna_noticias.model.Usuario;
+import com.modulo.steam_fruna_noticias.repository.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,20 +11,18 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping("/api")
 public class AuthController {
+    @Autowired
+    UsuarioRepository usuarioRepository;
 
-    @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequest request) {
-        if (validadorCredenciales(request.getUsername(), request.getPassword())) {
-            return ResponseEntity.ok("Login exitoso");
-        }
-        else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales incorrectas");
-        }
-
-
+    @PostMapping("/register")
+    public Usuario register(@RequestBody Usuario usuario) {
+        return usuarioRepository.save(usuario);
     }
 
-    private boolean validadorCredenciales(String username, String password) {
-        return username.equals("username") && password.equals("password");
-    }
+
+
+
 }
+
+
+
