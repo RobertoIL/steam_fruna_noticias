@@ -17,14 +17,13 @@
         <label for="comment">Descripción</label>
         <textarea class="form-control" rows="5" id="comment" name="text" v-model="noticia.descripcion"></textarea>
         <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-success">Guardar</button>
+            <button type="submit" class="btn btn-success" @click="seleccionarAutor">Guardar</button>
         </div>
         </form>
     </div>
 </template>
 
 <script>
-    import axios from 'axios'
     import Navbar from '../components/Navbar.vue'
     export default {
         name: 'CrearNoticia',
@@ -38,33 +37,45 @@
                     titulo: '',
                     descripcion: '',
                     categoria: this.categoriaSelect,
-                    autor: sessionStorage.getItem('username')
+                    autor: ''
                 }
             }                
         },
         methods: {
             seleccionarCategoria(categoriaSeleccionada) {
                 this.categoriaSelect = categoriaSeleccionada
+                this.noticia.categoria = categoriaSeleccionada
+                console.log(this.noticia.categoria)
             },
-            async addNoticia() {
-                try {
-                    const response = await axios.post('http://localhost:4000/noticias/add', {
-                        titulo: this.noticia.titulo,
-                        descripcion: this.noticia.descripcion,
-                        categoria: this.noticia.categoria,
-                        autor: this.noticia.autor
-                    })
-
-                    if(response.status === 200) {
-                        console.log('noticia creada con exito')
-                        this.$router.push('/noticias')
+            addNoticia() {
+                fetch('http://localhost:4000/noticias/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(this.noticia)
+                })
+                .then(response => {
+                    if(response.ok) {
+                        return response.json()
+                    } else {
+                        throw new Error('Error en la solicitud')
                     }
-                }
-                catch(error) {
-                    this.error = 'Error al crear noticia'
-                    console.error('Error al crear noticia:', error)
-                }
+                })
+                .then(data => {
+                    console.log('Datos recibidos: ', data)
+                    this.$router.push('/noticias')
+                })
+                .catch(error => {
+                    console.error('Error en la solicitud:', error)
+                })
+                
+
+            },
+            seleccionarAutor() {
+                this.noticia.autor = sessionStorage.getItem('username')
             }
+            
         },
 
     }
