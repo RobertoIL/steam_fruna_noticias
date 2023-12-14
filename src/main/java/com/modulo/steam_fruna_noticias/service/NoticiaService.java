@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 public interface NoticiaService {
-    public Noticia addNoticia(Noticia noticia);
+    public Noticia addNoticia(String titulo, String descripcion, String categoria, String username);
     public Noticia getNoticiaById(int id);
     public List<Noticia> getAllNoticias();
     public Noticia updateNoticia(Noticia noticia);

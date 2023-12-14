@@ -1,20 +1,33 @@
 package com.modulo.steam_fruna_noticias.service;
+import com.modulo.steam_fruna_noticias.model.Categorias;
 import com.modulo.steam_fruna_noticias.model.Usuario;
 import com.modulo.steam_fruna_noticias.repository.NoticiaRepository;
 
 import com.modulo.steam_fruna_noticias.model.Noticia;
+import com.modulo.steam_fruna_noticias.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class NoticiaServiceImpl implements NoticiaService{
     @Autowired
     private NoticiaRepository noticiaRepository;
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     @Override
-    public Noticia addNoticia(Noticia noticia) {
+    public Noticia addNoticia(String titulo, String descripcion, String categoria, String username) {
+        var autor = usuarioRepository.findByUsername(username).get();
+        Noticia noticia = new Noticia();
+        noticia.setTitulo(titulo);
+        noticia.setDescripcion(descripcion);
+        noticia.setCategoria(Categorias.valueOf(categoria));
+        noticia.setAutor(Optional.of(autor));
         return noticiaRepository.save(noticia);
     }
     @Override

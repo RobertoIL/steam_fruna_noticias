@@ -15,10 +15,16 @@ public class NoticiaController {
     private NoticiaService noticiaService;
 
     // add noticia
+    record NoticiaRequest(String titulo, String descripcion, String categoria, String autor) { }
+    record NoticiaResponse(String titulo, String descripcion, String categoria, String autor) { }
     @PostMapping("/add")
-    public String addNoticia(@RequestBody Noticia noticia) {
-        noticiaService.addNoticia(noticia);
-        return "Noticia agregada";
+    public NoticiaResponse addNoticia(@RequestBody NoticiaRequest noticia) {
+        var noticiaRegistrada = noticiaService.addNoticia(
+                noticia.titulo(),
+                noticia.descripcion(),
+                noticia.categoria(),
+                noticia.autor());
+        return new NoticiaResponse(noticiaRegistrada.getTitulo(), noticiaRegistrada.getDescripcion(), noticiaRegistrada.getCategoria().toString(), noticiaRegistrada.getAutor().getNombre());
     }
 
     // get noticia by id

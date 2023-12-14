@@ -7,28 +7,29 @@
                 {{ categoriaSelect }}
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" @click="seleccionarCategoria('Ofertas')">Ofertas</a></li>
-                <li><a class="dropdown-item" @click="seleccionarCategoria('Actualizaciones')">Actualizaciones</a></li>
-                <li><a class="dropdown-item" @click="seleccionarCategoria('Eventos')">Eventos</a></li>
-                <li><a class="dropdown-item" @click="seleccionarCategoria('Juegos')">Juegos</a></li>
+                <li><a class="dropdown-item" @click="seleccionarCategoria('OFERTAS')">Ofertas</a></li>
+                <li><a class="dropdown-item" @click="seleccionarCategoria('ACTUALIZACIONES')">Actualizaciones</a></li>
+                <li><a class="dropdown-item" @click="seleccionarCategoria('EVENTOS')">Eventos</a></li>
+                <li><a class="dropdown-item" @click="seleccionarCategoria('JUEGOS')">Juegos</a></li>
             </ul>
             <input type="text" class="form-control" placeholder="Titulo" v-model="noticia.titulo">
         </div>
         <label for="comment">Descripción</label>
         <textarea class="form-control" rows="5" id="comment" name="text" v-model="noticia.descripcion"></textarea>
-        <div class="d-flex justify-content-end"><input class="btn btn-success" type="submit" value="Guardar"></div>
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-success">Guardar</button>
+        </div>
         </form>
     </div>
 </template>
 
 <script>
+    import axios from 'axios'
     import Navbar from '../components/Navbar.vue'
-    import Login from '../components/Login.vue'
     export default {
         name: 'CrearNoticia',
         components: {
-            Navbar,
-            Login
+            Navbar
         },
         data() {
             return {
@@ -37,7 +38,7 @@
                     titulo: '',
                     descripcion: '',
                     categoria: this.categoriaSelect,
-                    autor: ''
+                    autor: sessionStorage.getItem('username')
                 }
             }                
         },
@@ -45,18 +46,24 @@
             seleccionarCategoria(categoriaSeleccionada) {
                 this.categoriaSelect = categoriaSeleccionada
             },
-            addNoticia() {
-                fetch('http://localhost:4000/noticias/add',{
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(this.noticia)
-                })
-                .then(data => {
-                    console.log(data)
-                    this.$router.push("/")
-                })
+            async addNoticia() {
+                try {
+                    const response = await axios.post('http://localhost:4000/noticias/add', {
+                        titulo: this.noticia.titulo,
+                        descripcion: this.noticia.descripcion,
+                        categoria: this.noticia.categoria,
+                        autor: this.noticia.autor
+                    })
+
+                    if(response.status === 200) {
+                        console.log('noticia creada con exito')
+                        this.$router.push('/noticias')
+                    }
+                }
+                catch(error) {
+                    this.error = 'Error al crear noticia'
+                    console.error('Error al crear noticia:', error)
+                }
             }
         },
 

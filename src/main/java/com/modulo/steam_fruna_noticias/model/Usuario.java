@@ -3,6 +3,8 @@ package com.modulo.steam_fruna_noticias.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import javax.sql.RowSet;
+
 @Entity
 @Getter
 @Setter
@@ -30,4 +32,6 @@ public class Usuario {
         usuario.setPassword(password);
         return usuario;
     }
+
+
 }

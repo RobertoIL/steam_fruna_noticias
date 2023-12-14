@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/">Noticias</a>
+                    <a class="nav-link active" href="/noticias">Noticias</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/buscador">Buscar Noticias</a>

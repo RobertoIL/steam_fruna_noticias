@@ -1,9 +1,5 @@
 <template>
     <main>
-        <div class="alert alert-danger alert-dismissible">
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            <strong>Avertencia!</strong> Primero debes identificarte como usuario
-        </div>
         <div class="container">
             <form @submit.prevent="login">
                 <div class="mb-3 mt-3">
@@ -26,6 +22,7 @@
 
 <script>
     import axios from 'axios';
+
     export default {
         name: 'Login',
 
@@ -33,7 +30,6 @@
             return {
                 username: '',
                 password: '',
-                loggedIn: false,
                 error: ''
             }
         },
@@ -46,9 +42,9 @@
                     });
                 
                 if (response.status === 200){
-                    this.loggedIn = true;
-                    this.username = ''
-                    this.password = ''
+                    console.log('Login exitoso')
+                    sessionStorage.setItem('username', this.username)
+                    this.$router.push('/noticias')
                 }
                 else if(response.status === 401) {
                     this.error = 'Credenciales incorrectas'

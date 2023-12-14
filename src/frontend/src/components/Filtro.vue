@@ -13,10 +13,5 @@
 </template>
 
 <script>
-    export default {
-        name: 'Filtro',
-        data() {
-            
-        }
-    }
+    
 </script>

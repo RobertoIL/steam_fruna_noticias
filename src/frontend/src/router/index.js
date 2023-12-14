@@ -4,7 +4,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
+      path: '/noticias',
       name: 'home',
       component: Home
     },
@@ -23,6 +23,12 @@ const router = createRouter({
       path: '/crear-noticia',
       name: 'Crear Noticia',
       component: () => import('../views/CrearNoticia.vue')
+    },
+    {
+      //provisorio
+      path: '/',
+      name: 'Login',
+      component: () => import('../views/Login.vue')
     }
   ]
 })
