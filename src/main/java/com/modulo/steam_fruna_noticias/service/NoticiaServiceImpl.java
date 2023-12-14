@@ -46,5 +46,10 @@ public class NoticiaServiceImpl implements NoticiaService{
     public void deleteNoticia(int id) {
         noticiaRepository.deleteById(id);
     }
+    @Override
+    public List<Noticia> getAllNoticiasByAutor(String username) {
+        var autor = usuarioRepository.findByUsername(username).get();
+        return noticiaRepository.findAllByAutor(autor);
+    }
 
 }

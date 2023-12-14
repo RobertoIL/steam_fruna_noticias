@@ -11,6 +11,7 @@ public interface NoticiaService {
     public Noticia addNoticia(String titulo, String descripcion, String categoria, String username);
     public Noticia getNoticiaById(int id);
     public List<Noticia> getAllNoticias();
+    public List<Noticia> getAllNoticiasByAutor(String username);
     public Noticia updateNoticia(Noticia noticia);
     public void deleteNoticia(int id);
 }

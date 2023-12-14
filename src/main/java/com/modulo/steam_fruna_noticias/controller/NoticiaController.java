@@ -40,6 +40,12 @@ public class NoticiaController {
         return noticiaService.getAllNoticias();
     }
 
+    // get all noticias by autor
+    @GetMapping("/autor")
+    public List<Noticia> getAllNoticiasByAutor(@RequestParam("username") String username) {
+        return noticiaService.getAllNoticiasByAutor(username);
+    }
+
     // update noticia
     @PutMapping("/update")
     public Noticia updateNoticia(@RequestBody Noticia noticia) {
