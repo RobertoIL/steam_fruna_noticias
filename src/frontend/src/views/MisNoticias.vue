@@ -1,20 +1,20 @@
 <template>
     <Navbar />
  
-    <Noticia v-for="noticia in noticias" :key="noticia.id" :noticia="noticia" />
+    <MiNoticia v-for="noticia in noticias" :key="noticia.id" :noticia="noticia" @eliminarNoticia="deleteNoticia($event)" />
     
     
 </template>
 
 <script>
     import Navbar from '../components/Navbar.vue'
-    import Noticia from '../components/Noticia.vue'
+    import MiNoticia from '../components/MiNoticia.vue'
 
     export default {
         name: 'Mis Noticias',
         components: {
         Navbar,
-        Noticia
+        MiNoticia
     },
         data() {
             return {
@@ -34,6 +34,24 @@
                 .then(data => {
                     this.noticias = data
                     console.log(data)
+                })
+            },
+            deleteNoticia(id){
+                const url = `http://localhost:4000/noticias/delete/${id}`
+                fetch(url, {
+                    method: 'DELETE'
+                })
+                .then(res => {
+                    if (res.ok) {
+                        this.getMyNoticias()
+                        window.location.reload()
+                    }
+                    else {
+                        console.error("Error al eliminar la noticia")
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al procesar la solicitud:', error)
                 })
             }
         }
