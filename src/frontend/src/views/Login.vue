@@ -1,20 +1,34 @@
 <template>
     <main>
-        <div class="container">
-            <form @submit.prevent="login">
-                <div class="mb-3 mt-3">
-                    <label for="text" class="form-label">Username:</label>
-                    <input type="username" class="form-control" id="username" placeholder="Enter username" name="email" v-model="username" required>
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-4">
                 </div>
-                <div class="mb-3">
-                    <label for="pwd" class="form-label">Password:</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" v-model="password">
-                </div>
+
+                <div class="col-4">
+                    <h2 class="text-center">Iniciar sesión</h2>
+                    <form @submit.prevent="login">
+                    <div class="mb-3 mt-3">
+                        <label for="text" class="form-label">Nombre de usuario:</label>
+                        <input type="username" class="form-control" id="username" placeholder="Ingrese nombre de usuario" name="email" v-model="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pwd" class="form-label">Contraseña:</label>
+                        <input type="password" class="form-control" id="pwd" placeholder="Ingrese contraseña" name="pswd" v-model="password">
+                    </div>
                 
-                <button type="submit" class="btn btn-primary">Login</button>
-            </form>
-            <div v-if="error" class="alert alert-danger" role="alert">
-                {{ error }}
+                    <div class="row">
+                        <button type="submit" class="btn btn-primary">Login</button>                    
+                    </div>
+                    <a href="/register">No tengo cuenta</a>
+                    </form> 
+
+                    <div v-if="error" class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                </div>
+                <div class="col-4">
+                </div>
             </div>
     </div>
     </main>
