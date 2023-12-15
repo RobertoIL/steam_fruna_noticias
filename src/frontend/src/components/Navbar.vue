@@ -16,13 +16,20 @@
                     <a class="nav-link" href="/crear-noticia">Crear Noticia</a>
                 </li>
                 </ul>
+                <PanelUsuario />
             </div>
             </nav>
         </main>
 
 </template>
 
-<style>
-    
-</style>
+<script>
+    import PanelUsuario from './PanelUsuario.vue';
+    export default {
+        name: 'Navbar',
+        components: {
+            PanelUsuario
+        }
+    }
+</script>
 
