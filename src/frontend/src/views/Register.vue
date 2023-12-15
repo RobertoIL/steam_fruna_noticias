@@ -10,23 +10,23 @@
                     <form @submit.prevent="register">
                     <div class="mb-3 mt-3">
                         <label for="text" class="form-label">Nombre de usuario:</label>
-                        <input type="username" class="form-control" id="username" placeholder="ingrese nombre de usuario" name="email" v-model="username" required>
+                        <input type="username" class="form-control" id="username" placeholder="" name="email" v-model="username" required>
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="text" class="form-label">Nombre:</label>
-                        <input type="username" class="form-control" id="nombre" placeholder="Ingrese nombre" name="email" v-model="nombre" required>
+                        <input type="username" class="form-control" id="nombre" placeholder="" name="email" v-model="nombre" required>
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="email" class="form-label">Email:</label>
-                        <input type="username" class="form-control" id="email" placeholder="Ingrese email" name="email" v-model="email" required>
+                        <input type="username" class="form-control" id="email" placeholder="" name="email" v-model="email" required>
                     </div>
                     <div class="mb-3">
                         <label for="pwd" class="form-label">Contraseña:</label>
-                        <input type="password" class="form-control" id="pwd" placeholder="Ingrese contraseña" name="pswd" v-model="password">
+                        <input type="password" class="form-control" id="pwd" placeholder="" name="pswd" v-model="password">
                     </div>
                     <div class="mb-3">
                         <label for="pwd" class="form-label">Confirme contraseña:</label>
-                        <input type="password" class="form-control" id="pwd" placeholder="Ingrese contraseña" name="pswd" v-model="confirmPassword">
+                        <input type="password" class="form-control" id="pwd" placeholder="" name="pswd" v-model="confirmPassword">
                     </div>
                 
                     <div class="row">

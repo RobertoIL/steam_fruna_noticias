@@ -10,11 +10,11 @@
                     <form @submit.prevent="login">
                     <div class="mb-3 mt-3">
                         <label for="text" class="form-label">Nombre de usuario:</label>
-                        <input type="username" class="form-control" id="username" placeholder="Ingrese nombre de usuario" name="email" v-model="username" required>
+                        <input type="username" class="form-control" id="username" placeholder="" name="email" v-model="username" required>
                     </div>
                     <div class="mb-3">
                         <label for="pwd" class="form-label">Contraseña:</label>
-                        <input type="password" class="form-control" id="pwd" placeholder="Ingrese contraseña" name="pswd" v-model="password">
+                        <input type="password" class="form-control" id="pwd" placeholder="" name="pswd" v-model="password">
                     </div>
                 
                     <div class="row">
