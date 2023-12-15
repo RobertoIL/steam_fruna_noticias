@@ -59,4 +59,11 @@ public class NoticiaController {
         return "Noticia eliminada";
     }
 
+    // get all noticias by titulo
+    @GetMapping("/buscar/titulo")
+    public List<Noticia> getAllNoticiasByTitulo(@RequestParam("titulo") String titulo) {
+        return noticiaService.getAllNoticiasByTitulo(titulo);
+    }
+
+
 }

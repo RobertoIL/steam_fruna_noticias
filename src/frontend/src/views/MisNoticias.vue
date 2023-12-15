@@ -1,6 +1,6 @@
 <template>
     <Navbar />
-    <div class="container">
+    <div class="container pt-5">
         <Noticia v-for="noticia in noticias" :key="noticia.id" :noticia="noticia" />
     </div>
     

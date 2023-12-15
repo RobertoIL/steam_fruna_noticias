@@ -51,5 +51,9 @@ public class NoticiaServiceImpl implements NoticiaService{
         var autor = usuarioRepository.findByUsername(username).get();
         return noticiaRepository.findAllByAutor(autor);
     }
+    @Override
+    public List<Noticia> getAllNoticiasByTitulo(String titulo) {
+        return noticiaRepository.findAllByTituloContainingIgnoreCase(titulo);
+    }
 
 }

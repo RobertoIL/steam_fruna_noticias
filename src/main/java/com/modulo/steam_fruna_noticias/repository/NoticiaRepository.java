@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface NoticiaRepository extends CrudRepository<Noticia, Integer> {
     List<Noticia> findAllByAutor(Usuario autor);
+    List<Noticia> findAllByTituloContainingIgnoreCase(String titulo);
 }

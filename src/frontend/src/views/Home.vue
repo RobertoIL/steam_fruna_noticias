@@ -1,8 +1,7 @@
 <template>
     <div>
         <Navbar />
-        <Filtro />
-        <div class="container">
+        <div class="container pt-5">
             <Noticia v-for="noticia in noticias" :key="noticia.id" :noticia="noticia" />
             
             
@@ -14,14 +13,12 @@
 <script>
     import Navbar from '../components/Navbar.vue'
     import Noticia from '../components/Noticia.vue'
-    import Filtro from '../components/Filtro.vue'
 
     export default {
         name: 'Home',
         components: {
             Navbar,
-            Noticia,
-            Filtro
+            Noticia
         },
         data() {
             return {
