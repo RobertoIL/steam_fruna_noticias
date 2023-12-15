@@ -47,10 +47,6 @@ public class NoticiaController {
     }
 
     // update noticia
-    @PutMapping("/update")
-    public Noticia updateNoticia(@RequestBody Noticia noticia) {
-        return noticiaService.updateNoticia(noticia);
-    }
 
     // delete noticia by id
     @DeleteMapping("/delete/{id}")
