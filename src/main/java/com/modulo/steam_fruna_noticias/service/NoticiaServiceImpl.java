@@ -39,8 +39,8 @@ public class NoticiaServiceImpl implements NoticiaService{
         return (List<Noticia>) noticiaRepository.findAll();
     }
     @Override
-    public Noticia updateNoticia(Noticia noticia) {
-        return noticiaRepository.save(noticia);
+    public Noticia updateNoticia(String titulo, String descripcion, String categoria, String username) {
+        return this.addNoticia(titulo, descripcion, categoria, username);
     }
     @Override
     public void deleteNoticia(int id) {

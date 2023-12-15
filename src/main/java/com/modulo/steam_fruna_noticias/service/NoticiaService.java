@@ -13,6 +13,6 @@ public interface NoticiaService {
     public List<Noticia> getAllNoticias();
     public List<Noticia> getAllNoticiasByAutor(String username);
     public List<Noticia> getAllNoticiasByTitulo(String titulo);
-    public Noticia updateNoticia(Noticia noticia);
+    public Noticia updateNoticia(String titulo, String descripcion, String categoria, String username);
     public void deleteNoticia(int id);
 }
