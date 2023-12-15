@@ -5,6 +5,8 @@ import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.util.Optional;
+
 @Entity
 @Getter
 @Setter
@@ -32,4 +34,7 @@ public class Noticia {
     private Usuario autor;
 
 
+    public void setAutor(Optional<Usuario> autor) {
+        this.autor = autor.get();
+    }
 }

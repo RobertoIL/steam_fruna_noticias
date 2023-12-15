@@ -1,21 +1,20 @@
 <template>
-    <div>
-        <Navbar />
-        <div class="container">
-            <div class="container">
-                <div class="input-group mt-3 mb-3">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-                    {{ categoria }}
-                    </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" @click="seleccionarCategoria('Título')">Título</a></li>
-                <li><a class="dropdown-item" @click="seleccionarCategoria('Autor')">Autor</a></li>
-            </ul>
-            <input type="text" class="form-control" :placeholder= "'Ingrese ' + categoria">
-        </div>
+    <Navbar />
+    <div class="container pt-3">
+        <form class="d-flex" @submit.prevent="buscarNoticia">
+            <input class="form-control me-2" type="text" placeholder="Buscar noticias" v-model="titulo">
+            <button class="btn btn-dark" type="submit">
+                <span class="material-symbols-outlined">
+                search
+                </span>
+            </button>
+      </form>
     </div>
-        </div>
-    </div>
+
+    <Noticia v-for="noticia in noticias" :key="noticia.id" :noticia="noticia"/>
+
+        
+    
 </template>
 
 <script>
@@ -30,12 +29,20 @@
         },
         data() {
             return {
-                categoria: 'Título'
+                titulo: '',
+                noticias: []
             }
         },
         methods: {
-            seleccionarCategoria(categoriaSeleccionada) {
-                this.categoria = categoriaSeleccionada
+            async buscarNoticia() {
+                const titulo = this.titulo
+                const url = `http://localhost:4000/noticias/buscar/titulo?titulo=${titulo}`;
+                fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    this.noticias = data
+                    console.log(data)
+                })
             }
         }
     }

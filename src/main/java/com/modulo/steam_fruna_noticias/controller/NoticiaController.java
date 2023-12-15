@@ -8,16 +8,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping(path = "/noticias")
 public class NoticiaController {
     @Autowired
     private NoticiaService noticiaService;
 
     // add noticia
+    record NoticiaRequest(String titulo, String descripcion, String categoria, String autor) { }
+    record NoticiaResponse(String titulo, String descripcion, String categoria, String autor) { }
     @PostMapping("/add")
-    public String addNoticia(@RequestBody Noticia noticia) {
-        noticiaService.addNoticia(noticia);
-        return "Noticia agregada";
+    public NoticiaResponse addNoticia(@RequestBody NoticiaRequest noticia) {
+        var noticiaRegistrada = noticiaService.addNoticia(
+                noticia.titulo(),
+                noticia.descripcion(),
+                noticia.categoria(),
+                noticia.autor());
+        return new NoticiaResponse(noticiaRegistrada.getTitulo(), noticiaRegistrada.getDescripcion(), noticiaRegistrada.getCategoria().toString(), noticiaRegistrada.getAutor().getNombre());
     }
 
     // get noticia by id
@@ -27,17 +34,19 @@ public class NoticiaController {
     }
 
     // get all noticias
-    @CrossOrigin(origins = "http://localhost:5173")
+
     @GetMapping("/")
     public List<Noticia> getAllNoticias() {
         return noticiaService.getAllNoticias();
     }
 
-    // update noticia
-    @PutMapping("/update")
-    public Noticia updateNoticia(@RequestBody Noticia noticia) {
-        return noticiaService.updateNoticia(noticia);
+    // get all noticias by autor
+    @GetMapping("/autor")
+    public List<Noticia> getAllNoticiasByAutor(@RequestParam("username") String username) {
+        return noticiaService.getAllNoticiasByAutor(username);
     }
+
+    // update noticia
 
     // delete noticia by id
     @DeleteMapping("/delete/{id}")
@@ -45,4 +54,12 @@ public class NoticiaController {
         noticiaService.deleteNoticia(id);
         return "Noticia eliminada";
     }
+
+    // get all noticias by titulo
+    @GetMapping("/buscar/titulo")
+    public List<Noticia> getAllNoticiasByTitulo(@RequestParam("titulo") String titulo) {
+        return noticiaService.getAllNoticiasByTitulo(titulo);
+    }
+
+
 }

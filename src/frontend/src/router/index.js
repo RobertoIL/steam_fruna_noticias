@@ -4,7 +4,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
+      path: '/noticias',
       name: 'home',
       component: Home
     },
@@ -13,15 +13,27 @@ const router = createRouter({
       name: 'Mis Noticias',
       component: () => import('../views/MisNoticias.vue')
     },
-    {
-      path: '/populares',
-      name: 'Noticias populares',
-      component: () => import('../views/NoticiasPopulares.vue')
-    },
+    
     {
       path: '/buscador',
       name: 'Buscar Noticias',
       component: () => import('../views/Buscador.vue')
+    },
+    {
+      path: '/crear-noticia',
+      name: 'Crear Noticia',
+      component: () => import('../views/CrearNoticia.vue')
+    },
+    {
+      //provisorio
+      path: '/',
+      name: 'Login',
+      component: () => import('../views/Login.vue')
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: () => import('../views/Register.vue')
     }
   ]
 })

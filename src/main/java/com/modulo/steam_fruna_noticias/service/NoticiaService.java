@@ -1,15 +1,18 @@
 package com.modulo.steam_fruna_noticias.service;
 
 import com.modulo.steam_fruna_noticias.model.Noticia;
+import com.modulo.steam_fruna_noticias.model.Usuario;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public interface NoticiaService {
-    public Noticia addNoticia(Noticia noticia);
+    public Noticia addNoticia(String titulo, String descripcion, String categoria, String username);
     public Noticia getNoticiaById(int id);
     public List<Noticia> getAllNoticias();
-    public Noticia updateNoticia(Noticia noticia);
+    public List<Noticia> getAllNoticiasByAutor(String username);
+    public List<Noticia> getAllNoticiasByTitulo(String titulo);
+    public Noticia updateNoticia(String titulo, String descripcion, String categoria, String username);
     public void deleteNoticia(int id);
 }
